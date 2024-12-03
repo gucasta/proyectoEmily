@@ -1,0 +1,1175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1280</width>
+    <height>720</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1280</width>
+    <height>720</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="menu_widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>171</width>
+      <height>721</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget{
+	background-color: rgb(139, 208, 208);
+}
+QPushButton{
+	height: 30px;
+	border: none;
+	color: white;
+}</string>
+    </property>
+    <widget class="QFrame" name="frame">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>150</width>
+       <height>130</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>130</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>130</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QFrame{
+	background-color: white;
+}</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Shape::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Shadow::Plain</enum>
+     </property>
+     <property name="lineWidth">
+      <number>0</number>
+     </property>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>16</x>
+        <y>-3</y>
+        <width>121</width>
+        <height>141</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <kerning>true</kerning>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="assests.qrc">:/iconos/icons/logo.png</pixmap>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>160</y>
+       <width>151</width>
+       <height>251</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QPushButton" name="pacientes_btn">
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	padding-left:-24px;
+}
+QPushButton:checked {
+	background-color: white;
+	border-radius:3px;
+	color: #8BD0D0;
+}</string>
+        </property>
+        <property name="text">
+         <string> Pacientes</string>
+        </property>
+        <property name="icon">
+         <iconset resource="assests.qrc">
+          <normaloff>:/iconos/icons/paciente.png</normaloff>
+          <normalon>:/iconos/icons/doctor-check.png</normalon>:/iconos/icons/paciente.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="autoExclusive">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="signos_btn">
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	padding-left:-50px;
+}
+QPushButton:checked {
+	background-color: white;
+	border-radius:3px;
+	color: #8BD0D0;
+}</string>
+        </property>
+        <property name="text">
+         <string> Signos</string>
+        </property>
+        <property name="icon">
+         <iconset resource="assests.qrc">
+          <normaloff>:/iconos/icons/signos.png</normaloff>
+          <normalon>:/iconos/icons/signos-check.png</normalon>:/iconos/icons/signos.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="autoExclusive">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="sintomas_btn">
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	padding-left:-28px;
+}
+QPushButton:checked {
+	background-color: white;
+	border-radius:3px;
+	color: #8BD0D0;
+}</string>
+        </property>
+        <property name="text">
+         <string> Sintomas</string>
+        </property>
+        <property name="icon">
+         <iconset resource="assests.qrc">
+          <normaloff>:/iconos/icons/sintomas.png</normaloff>
+          <normalon>:/iconos/icons/sintomas-check.png</normalon>:/iconos/icons/sintomas.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="autoExclusive">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="diagnostico_btn">
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	padding-left:0px;
+}
+QPushButton:checked {
+	background-color: white;
+	border-radius:3px;
+	color: #8BD0D0;
+}</string>
+        </property>
+        <property name="text">
+         <string> Diagnóstico</string>
+        </property>
+        <property name="icon">
+         <iconset resource="assests.qrc">
+          <normaloff>:/iconos/icons/diagnostico.png</normaloff>
+          <normalon>:/iconos/icons/diagnostico-check.png</normalon>:/iconos/icons/diagnostico.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="autoExclusive">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="tratamiento_btn">
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	padding-left:0px;
+}
+QPushButton:checked {
+	background-color: white;
+	border-radius:3px;
+	color: #8BD0D0;
+}</string>
+        </property>
+        <property name="text">
+         <string> Tratamiento</string>
+        </property>
+        <property name="icon">
+         <iconset resource="assests.qrc">
+          <normaloff>:/iconos/icons/tratamiento.png</normaloff>
+          <normalon>:/iconos/icons/tratamiento-check.png</normalon>:/iconos/icons/tratamiento.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="autoExclusive">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="principal_widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>70</y>
+      <width>1091</width>
+      <height>641</height>
+     </rect>
+    </property>
+    <widget class="QStackedWidget" name="stackedWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>1071</width>
+       <height>621</height>
+      </rect>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="paciente_page">
+      <widget class="QLabel" name="label_9">
+       <property name="geometry">
+        <rect>
+         <x>9</x>
+         <y>0</y>
+         <width>301</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>18</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Información del Paciente</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_19">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>251</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Lista de Pacientes</string>
+       </property>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>116</y>
+         <width>431</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLineEdit" name="search_paciente_apellidos">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>38</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>38</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLineEdit{
+	padding-left: 20px;
+	border: 1px solid gray;
+	border-radius: 10px;
+}</string>
+          </property>
+          <property name="placeholderText">
+           <string>Buscar por apellidos...</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="search_paciente_poliza">
+          <property name="minimumSize">
+           <size>
+            <width>161</width>
+            <height>38</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>161</width>
+            <height>38</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLineEdit{
+	padding-left: 20px;
+	border: 1px solid gray;
+	border-radius: 10px;
+}</string>
+          </property>
+          <property name="placeholderText">
+           <string>Bucar por poliza...</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>63</y>
+         <width>431</width>
+         <height>43</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QPushButton" name="regPaciente_btn">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>41</height>
+           </size>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+	background-color: rgb(139, 208, 208);
+	color: white;
+	border: none;
+	border-radius: 8px;
+	font-weight: bold;
+	font-size: 12px;
+}</string>
+          </property>
+          <property name="text">
+           <string>Registrar Paciente</string>
+          </property>
+          <property name="icon">
+           <iconset resource="assests.qrc">
+            <normaloff>:/iconos/icons/paciente.png</normaloff>:/iconos/icons/paciente.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="expExcel_paciente_btn">
+          <property name="minimumSize">
+           <size>
+            <width>131</width>
+            <height>41</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>131</width>
+            <height>41</height>
+           </size>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+	background-color: rgb(85, 170, 127);
+	color: white;
+	border: none;
+	border-radius: 8px;
+	font-weight: bold;
+	font-size: 12px;
+}</string>
+          </property>
+          <property name="text">
+           <string> Exportar a Excel</string>
+          </property>
+          <property name="icon">
+           <iconset resource="assests.qrc">
+            <normaloff>:/iconos/icons/excel.png</normaloff>:/iconos/icons/excel.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="expPdf_paciente_btn">
+          <property name="minimumSize">
+           <size>
+            <width>121</width>
+            <height>41</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>121</width>
+            <height>41</height>
+           </size>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+	background-color: rgb(255, 92, 95);
+	color: white;
+	border: none;
+	border-radius: 8px;
+	font-weight: bold;
+	font-size: 12px;
+}</string>
+          </property>
+          <property name="text">
+           <string> Exportar a PDF</string>
+          </property>
+          <property name="icon">
+           <iconset resource="assests.qrc">
+            <normaloff>:/iconos/icons/pdf.png</normaloff>:/iconos/icons/pdf.png</iconset>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QTableWidget" name="paciente_tableWidget">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>170</y>
+         <width>1061</width>
+         <height>451</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QHeaderView::section{
+	font-weight: bold;
+	background-color: #8bd0d0;
+	color: white;
+}
+
+QTableWidget{
+	alternate-background-color: rgb(231, 231, 231);
+	background-color: white;
+}</string>
+       </property>
+       <property name="alternatingRowColors">
+        <bool>true</bool>
+       </property>
+       <column>
+        <property name="text">
+         <string>Fecha</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Poliza</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Nombre</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Apellidos</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Edad</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Genero</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Opciones</string>
+        </property>
+       </column>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="signos_page">
+      <widget class="QLabel" name="label_4">
+       <property name="geometry">
+        <rect>
+         <x>380</x>
+         <y>230</y>
+         <width>271</width>
+         <height>141</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>24</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Signos Catalogo</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="regSignos_btn">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>70</y>
+         <width>151</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>41</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	background-color: rgb(139, 208, 208);
+	color: white;
+	border: none;
+	border-radius: 8px;
+	font-weight: bold;
+	font-size: 12px;
+}</string>
+       </property>
+       <property name="text">
+        <string>Registrar Signos</string>
+       </property>
+       <property name="icon">
+        <iconset resource="assests.qrc">
+         <normaloff>:/iconos/icons/paciente.png</normaloff>:/iconos/icons/paciente.png</iconset>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_10">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>301</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>18</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Signos del Paciente</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_21">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>30</y>
+         <width>251</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Lista de signos</string>
+       </property>
+      </widget>
+      <widget class="QTableWidget" name="signos_tableWidget">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>170</y>
+         <width>1071</width>
+         <height>441</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>1071</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>1071</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QHeaderView::section{
+	font-weight: bold;
+	background-color: #8bd0d0;
+	color: white;
+}
+
+QTableWidget{
+	alternate-background-color: rgb(231, 231, 231);
+	background-color: white;
+}</string>
+       </property>
+       <property name="alternatingRowColors">
+        <bool>true</bool>
+       </property>
+       <column>
+        <property name="text">
+         <string>Peso</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Estatura</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Presión Sistólica</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Presión Diastólica</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Saturación de oxigeno</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Temperatura corporal</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Frecuencia Cardiaca</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Opciones</string>
+        </property>
+       </column>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="sintomas_page">
+      <widget class="QLabel" name="label_5">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>240</y>
+         <width>271</width>
+         <height>141</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>24</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Sintomas Catalogo</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="diagnostico">
+      <widget class="QLabel" name="label_6">
+       <property name="geometry">
+        <rect>
+         <x>370</x>
+         <y>220</y>
+         <width>321</width>
+         <height>141</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>24</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Diagnóstico Catalogo</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_11">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>301</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>18</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Diagnóstico del paciente</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_22">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>40</y>
+         <width>251</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Lista de diagnósticos</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="regDiagnostico_btn">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>80</y>
+         <width>181</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>41</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	background-color: rgb(139, 208, 208);
+	color: white;
+	border: none;
+	border-radius: 8px;
+	font-weight: bold;
+	font-size: 12px;
+}</string>
+       </property>
+       <property name="text">
+        <string>Registrar Diagnóstico</string>
+       </property>
+       <property name="icon">
+        <iconset resource="assests.qrc">
+         <normaloff>:/iconos/icons/paciente.png</normaloff>:/iconos/icons/paciente.png</iconset>
+       </property>
+      </widget>
+      <widget class="QTableWidget" name="diagnostico_tableWidget">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>140</y>
+         <width>1071</width>
+         <height>441</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>1071</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>1071</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QHeaderView::section{
+	font-weight: bold;
+	background-color: #8bd0d0;
+	color: white;
+}
+
+QTableWidget{
+	alternate-background-color: rgb(231, 231, 231);
+	background-color: white;
+}</string>
+       </property>
+       <property name="alternatingRowColors">
+        <bool>true</bool>
+       </property>
+       <column>
+        <property name="text">
+         <string>Fecha</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Poliza</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Nombre</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Apellido</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Diagnóstico</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Opciones</string>
+        </property>
+       </column>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tratamiento_page">
+      <widget class="QLabel" name="label_7">
+       <property name="geometry">
+        <rect>
+         <x>390</x>
+         <y>220</y>
+         <width>341</width>
+         <height>141</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>24</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Tratamiento Catalogo</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_12">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>301</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>18</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Tratamiento del Paciente</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_23">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>30</y>
+         <width>251</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Lista de tratamientoa</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="regTratamiento_btn">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>70</y>
+         <width>191</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>41</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	background-color: rgb(139, 208, 208);
+	color: white;
+	border: none;
+	border-radius: 8px;
+	font-weight: bold;
+	font-size: 12px;
+}</string>
+       </property>
+       <property name="text">
+        <string>Registrar Tratamiento</string>
+       </property>
+       <property name="icon">
+        <iconset resource="assests.qrc">
+         <normaloff>:/iconos/icons/paciente.png</normaloff>:/iconos/icons/paciente.png</iconset>
+       </property>
+      </widget>
+      <widget class="QTableWidget" name="tratamiento_tableWidget">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>130</y>
+         <width>1071</width>
+         <height>441</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>1071</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>1071</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QHeaderView::section{
+	font-weight: bold;
+	background-color: #8bd0d0;
+	color: white;
+}
+
+QTableWidget{
+	alternate-background-color: rgb(231, 231, 231);
+	background-color: white;
+}</string>
+       </property>
+       <property name="alternatingRowColors">
+        <bool>true</bool>
+       </property>
+       <column>
+        <property name="text">
+         <string>Fecha</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Duracion</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Indicaciones</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Observaciones</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Opciones</string>
+        </property>
+       </column>
+      </widget>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="encabezado_widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>10</y>
+      <width>1091</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>6</x>
+       <y>4</y>
+       <width>461</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Bienvenidos al servicio de urgencias</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>950</x>
+       <y>16</y>
+       <width>121</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Usuario X (admin)</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="assests.qrc"/>
+ </resources>
+ <connections/>
+</ui>
