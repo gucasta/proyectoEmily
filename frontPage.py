@@ -241,7 +241,7 @@ class MenuBarraLateral(QMainWindow, Ui_MainWindow):
     
     # Guardamos el DataFrame a un archivo de Excel
     # Exlcuimos la ultima columna antes de exportar
-    df_filtrado = df.iloc[:1, :-1]
+    df_filtrado = df.iloc[:, :-1]
     
     # Abrimos QFileDialog para obtener la ruta de guardado
     file_dialog = QFileDialog()
