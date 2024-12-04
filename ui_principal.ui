@@ -582,6 +582,11 @@ QTableWidget{
        </property>
        <column>
         <property name="text">
+         <string>id</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
          <string>Fecha</string>
         </property>
        </column>

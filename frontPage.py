@@ -40,13 +40,14 @@ class MenuBarraLateral(QMainWindow, Ui_MainWindow):
     self.search_paciente_poliza.textChanged.connect(self.buscar_paciente_poliza)
     
     # Ajustamos ancho de celdas de la tabla pacientes
-    self.paciente_tableWidget.setColumnWidth(0, 80)
+    self.paciente_tableWidget.setColumnWidth(0, 40)
     self.paciente_tableWidget.setColumnWidth(1, 80)
-    self.paciente_tableWidget.setColumnWidth(2, 200)
+    self.paciente_tableWidget.setColumnWidth(2, 80)
     self.paciente_tableWidget.setColumnWidth(3, 200)
-    self.paciente_tableWidget.setColumnWidth(4, 80)
+    self.paciente_tableWidget.setColumnWidth(4, 200)
     self.paciente_tableWidget.setColumnWidth(5, 100)
-    self.paciente_tableWidget.setColumnWidth(6, 135)
+    self.paciente_tableWidget.setColumnWidth(6, 100)
+    self.paciente_tableWidget.setColumnWidth(7, 135)
     
     # Exportar a Excel
     self.expExcel_paciente_btn.clicked.connect(self.exportar_a_excel_pacientes)
@@ -188,7 +189,7 @@ class MenuBarraLateral(QMainWindow, Ui_MainWindow):
         botones_acciones_widget = BotonesAccionWidgetPaciente(row_index, row_data, self)
         
         # Insertamos los botones en la celda de acciones
-        self.paciente_tableWidget.setCellWidget(row_index, 6, botones_acciones_widget)
+        self.paciente_tableWidget.setCellWidget(row_index, 7, botones_acciones_widget)
         self.paciente_tableWidget.setRowHeight(row_index, 50)
         
   # Funcion para busqueda de paciente por apellidos
@@ -202,7 +203,7 @@ class MenuBarraLateral(QMainWindow, Ui_MainWindow):
     # Ejecutamos la consulta SQL
     cur = self.crear_conexion().cursor()
     sql_query = f"""
-      SELECT fecha, poliza, nombre, apellidos, edad, genero FROM pacientes WHERE apellidos LIKE '%{consulta_busqueda}%'
+      SELECT * FROM pacientes WHERE apellidos LIKE '%{consulta_busqueda}%'
     """
     
     cur.execute(sql_query)
@@ -219,7 +220,7 @@ class MenuBarraLateral(QMainWindow, Ui_MainWindow):
         botones_acciones_widget = BotonesAccionWidgetPaciente(row_index, row_data, self)
         
         # Insertamos los botones en la celda de acciones
-        self.paciente_tableWidget.setCellWidget(row_index, 6, botones_acciones_widget)
+        self.paciente_tableWidget.setCellWidget(row_index, 7, botones_acciones_widget)
         self.paciente_tableWidget.setRowHeight(row_index, 50)
         
   # Funcion para busqueda de paciente por poliza
@@ -233,7 +234,7 @@ class MenuBarraLateral(QMainWindow, Ui_MainWindow):
     # Ejecutamos la consulta SQL
     cur = self.crear_conexion().cursor()
     sql_query = f"""
-      SELECT fecha, poliza, nombre, apellidos, edad, genero FROM pacientes WHERE poliza LIKE '%{consulta_busqueda}%'
+      SELECT * FROM pacientes WHERE poliza LIKE '%{consulta_busqueda}%'
     """
     
     cur.execute(sql_query)
@@ -250,7 +251,7 @@ class MenuBarraLateral(QMainWindow, Ui_MainWindow):
         botones_acciones_widget = BotonesAccionWidgetPaciente(row_index, row_data, self)
         
         # Insertamos los botones en la celda de acciones
-        self.paciente_tableWidget.setCellWidget(row_index, 6, botones_acciones_widget)
+        self.paciente_tableWidget.setCellWidget(row_index, 7, botones_acciones_widget)
         self.paciente_tableWidget.setRowHeight(row_index, 50)
   
   # Funcion para exportar a Excel
@@ -270,7 +271,7 @@ class MenuBarraLateral(QMainWindow, Ui_MainWindow):
     
     # Guardamos el DataFrame a un archivo de Excel
     # Exlcuimos la ultima columna antes de exportar
-    df_filtrado = df.iloc[:, :-1]
+    df_filtrado = df.iloc[:1, :-1]
     
     # Abrimos QFileDialog para obtener la ruta de guardado
     file_dialog = QFileDialog()
@@ -350,7 +351,7 @@ class MenuBarraLateral(QMainWindow, Ui_MainWindow):
     
     # Construimos la consulta SQL
     consulta = f"""
-      SELECT fecha, poliza, nombre, apellidos, edad, genero FROM pacientes
+      SELECT * FROM pacientes
     """
     
     cur.execute(consulta)
@@ -392,7 +393,8 @@ class BotonesAccionWidgetPaciente(QWidget):
     self.barraLateral = barraLateral # Almacenamos una referencia a MenuBarraLateral
     
     # Obtenemos el numero de poliza del paciente
-    self.paciente_poliza = self.row_data[1]
+    self.paciente_id = self.row_data[0]
+    self.paciente_poliza = self.row_data[2]
     
     layout = QHBoxLayout(self)
     
@@ -447,7 +449,7 @@ class BotonesAccionWidgetPaciente(QWidget):
     )
     
     if mensaje == QMessageBox.StandardButton.Yes:
-      consulta_borrar = f"DELETE FROM pacientes WHERE poliza='{self.paciente_poliza}'"
+      consulta_borrar = f"DELETE FROM pacientes WHERE id='{self.paciente_id}'"
       cur.execute(consulta_borrar)
       self.mydb.commit()
       self.mydb.close()

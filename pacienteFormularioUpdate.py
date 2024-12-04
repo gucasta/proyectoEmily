@@ -36,12 +36,13 @@ class Ui_PacienteDialogUpdate(QDialog):
         
         self.paciente_info = self.paciente_seleccionado()[0]
         
-        self.paciente_fecha = self.paciente_info[0]
-        self.paciente_poliza = self.paciente_info[1]
-        self.paciente_nombre = self.paciente_info[2]
-        self.paciente_apellidos = self.paciente_info[3]
-        self.paciente_edad = self.paciente_info[4]
-        self.paciente_genero = self.paciente_info[5]
+        self.paciente_id = self.paciente_info[0]
+        self.paciente_fecha = self.paciente_info[1]
+        self.paciente_poliza = self.paciente_info[2]
+        self.paciente_nombre = self.paciente_info[3]
+        self.paciente_apellidos = self.paciente_info[4]
+        self.paciente_edad = self.paciente_info[5]
+        self.paciente_genero = self.paciente_info[6]
         
         self.resize(548, 584)
         self.setStyleSheet(u"QDialog{\n"
@@ -284,7 +285,7 @@ class Ui_PacienteDialogUpdate(QDialog):
         fecha_objeto = QDate.fromString(self.paciente_fecha, "yyyy-MM-dd")
         
         self.fecha_dateEdit.setDate(fecha_objeto)
-        self.poliza_lineEdit.setText(str(self.poliza_paciente))
+        self.poliza_lineEdit.setText(str(self.paciente_poliza))
         self.nombre_lineEdit.setText(str(self.paciente_nombre))
         self.apellido_lineEdit.setText(str(self.paciente_apellidos))
         self.edad_lineEdit.setText(str(self.paciente_edad))
@@ -306,9 +307,9 @@ class Ui_PacienteDialogUpdate(QDialog):
         self.cur = self.crear_conexion().cursor()
         
         # obtenemos las variables del paciente de la tabla
-        self.poliza_paciente = self.row_data[1]
+        self.id_paciente = self.row_data[0]
         
-        consulta = f"SELECT fecha, poliza, nombre, apellidos, edad, genero FROM pacientes WHERE poliza = '{self.poliza_paciente}'"
+        consulta = f"SELECT * FROM pacientes WHERE id = '{self.id_paciente}'"
         
         self.cur.execute(consulta)
         
@@ -340,7 +341,7 @@ class Ui_PacienteDialogUpdate(QDialog):
                     edad='{self.edad_lineEdit.text()}',
                     genero='{self.comboBox.currentText()}'
                 WHERE
-                    poliza='{self.poliza_paciente}'
+                    id='{self.id_paciente}'
             """
             
             cur.execute(consulta_editar)
