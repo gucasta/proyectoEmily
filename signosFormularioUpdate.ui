@@ -264,7 +264,7 @@ QLineEdit{
     </font>
    </property>
    <property name="text">
-    <string>Registrar Signos</string>
+    <string>Editar Signos</string>
    </property>
   </widget>
   <widget class="QWidget" name="layoutWidget_5">
@@ -296,7 +296,7 @@ QLineEdit{
 }</string>
       </property>
       <property name="text">
-       <string>Guardar</string>
+       <string>Editar</string>
       </property>
      </widget>
     </item>
@@ -484,10 +484,10 @@ QLineEdit{
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>9</x>
-     <y>77</y>
-     <width>521</width>
-     <height>60</height>
+     <x>10</x>
+     <y>78</y>
+     <width>511</width>
+     <height>50</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -516,18 +516,16 @@ QLineEdit{
      </widget>
     </item>
     <item>
-     <widget class="QComboBox" name="signos_paciente_comboBox">
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>31</height>
-       </size>
+     <widget class="QLabel" name="signos_nombre">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <italic>true</italic>
+        <underline>false</underline>
+       </font>
       </property>
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>31</height>
-       </size>
+      <property name="text">
+       <string>TextLabel</string>
       </property>
      </widget>
     </item>

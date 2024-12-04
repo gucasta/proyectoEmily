@@ -3,11 +3,13 @@ from PySide6.QtGui import QAction, QIcon
 from ui_principal import Ui_MainWindow
 
 import sqlite3
+from cargaBD import CargaBD
 import pandas as pd
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
 from reportlab.lib import colors
 from pacienteFormularioUpdate import Ui_PacienteDialogUpdate
+from BotonesAccionesSignos import BotonesAccionWidgetSignos
 
 class MenuBarraLateral(QMainWindow, Ui_MainWindow):
   def __init__(self):
@@ -25,10 +27,8 @@ class MenuBarraLateral(QMainWindow, Ui_MainWindow):
     # Creamos una conexion a sqlite3
     self.crear_conexion()
     
-    # Creamos las tablas
-    self.crear_tabla_pacientes()
-    self.crear_tabla_signos()
-    self.crear_tabla_diagnostico()
+    # Creamos y alimentamos tablas
+    CargaBD()
     
     # Cargamos informacion en el QTable
     self.cargar_datos_pacientes()
@@ -38,6 +38,9 @@ class MenuBarraLateral(QMainWindow, Ui_MainWindow):
     # Filtros de busqueda pacientes
     self.search_paciente_apellidos.textChanged.connect(self.buscar_paciente_apellidos)
     self.search_paciente_poliza.textChanged.connect(self.buscar_paciente_poliza)
+    
+    # Filtros de busqueda signos
+    self.search_signos_paciente.textChanged.connect(self.buscar_signos_paciente)
     
     # Ajustamos ancho de celdas de la tabla pacientes
     self.paciente_tableWidget.setColumnWidth(0, 40)
@@ -49,6 +52,18 @@ class MenuBarraLateral(QMainWindow, Ui_MainWindow):
     self.paciente_tableWidget.setColumnWidth(6, 100)
     self.paciente_tableWidget.setColumnWidth(7, 135)
     
+    # Ajustamos ancho de celdas de la tabla pacientes
+    self.signos_tableWidget.setColumnWidth(0, 40)
+    self.signos_tableWidget.setColumnWidth(1, 200)
+    self.signos_tableWidget.setColumnWidth(2, 60)
+    self.signos_tableWidget.setColumnWidth(3, 60)
+    self.signos_tableWidget.setColumnWidth(4, 60)
+    self.signos_tableWidget.setColumnWidth(5, 60)
+    self.signos_tableWidget.setColumnWidth(6, 80)
+    self.signos_tableWidget.setColumnWidth(7, 90)
+    self.signos_tableWidget.setColumnWidth(8, 90)
+    self.signos_tableWidget.setColumnWidth(9, 135)
+
     # Exportar a Excel
     self.expExcel_paciente_btn.clicked.connect(self.exportar_a_excel_pacientes)
     
@@ -59,6 +74,7 @@ class MenuBarraLateral(QMainWindow, Ui_MainWindow):
     self.regPaciente_btn.clicked.connect(self.abrir_formulario_paciente)
     self.regSignos_btn.clicked.connect(self.abrir_formulario_signos)
     self.regDiagnostico_btn.clicked.connect(self.abrir_formulario_diagnostico)
+    self.regSintomas_btn.clicked.connect(self.abrir_formulario_sintomas)
     
   # Funciones o metodos para cambiar de pagina
   def cambiar_a_pagina_pacientes(self):
@@ -80,62 +96,6 @@ class MenuBarraLateral(QMainWindow, Ui_MainWindow):
     
     return self.mydb
   
-  # Funcion o metodo para crear tabla
-  def crear_tabla_pacientes(self):
-    # Creamos un cursor para ejecutar consultar SQL
-    cur = self.crear_conexion().cursor()
-
-  def crear_tabla_signos(self):
-    cur = self.crear_conexion().cursor()
-
-  def crear_tabla_diagnostico(self):
-    cur = self.crear_conexion().cursor()
-    
-    consulta_crear_tabla_pacientes = f"""
-      CREATE TABLE IF NOT EXISTS pacientes(
-        id integer NOT NULL PRIMARY KEY AUTOINCREMENT,
-        fecha TEXT,
-        poliza TEXT,
-        nombre TEXT,
-        apellidos TEXT,
-        edad INT,
-        genero TEXT
-      )
-    """
-  
-    cur.execute(consulta_crear_tabla_pacientes)
-    
-    consulta_crear_tabla_signos = f"""
-      CREATE TABLE IF NOT EXISTS signos(
-        id integer NOT NULL PRIMARY KEY AUTOINCREMENT,
-        peso INT,
-        estatura INT,
-        sistolica INT,
-        diastolica INT,
-        oxigenacion INT,
-        temperatura INT,
-        frecuencia INT
-      )
-    """
-  
-    cur.execute(consulta_crear_tabla_signos)
-
-    # TODO: Para Emily, no repetir datos que ya estan en otras tablas: "poliza", "nombre", "apellido" ya existen en la tabla paciente
-    # porque rompe con la formas normales de la teoria de las Bases de Datos
-    consulta_crear_tabla_diagnostico = f"""
-      CREATE TABLE IF NOT EXISTS signos(
-        id integer NOT NULL PRIMARY KEY AUTOINCREMENT,
-        fecha INT,
-        poliza INT,
-        nombre INT,
-        apellido INT,
-        diagnostico INT
-      )
-    """
-    
-    self.mydb.commit()
-    self.mydb.close()
-  
   # Funcion o metodo para abrir formulario
   def abrir_formulario_paciente(self):
     # Importamos el formulario
@@ -154,6 +114,10 @@ class MenuBarraLateral(QMainWindow, Ui_MainWindow):
 
     signos_formulario = Ui_SignosDialog(self)
     resultado = signos_formulario.exec()
+    
+    # Si el registro del paciente se hizo correctamente recargamos la tabla de paciente
+    if resultado == Ui_SignosDialog.Accepted:
+      self.recargar_datos_signos()
   
   def abrir_formulario_diagnostico(self):
     from diagnosticoFormulario import Ui_DiagnosticoDialog
@@ -161,12 +125,18 @@ class MenuBarraLateral(QMainWindow, Ui_MainWindow):
     diagnostico_formulario = Ui_DiagnosticoDialog(self)
     resultado = diagnostico_formulario.exec()
     
+  def abrir_formulario_sintomas(self):
+    from sintomasFormulario import Ui_SintomasDialog
+    
+    sintomas_formulario = Ui_SintomasDialog(self)
+    resultado = sintomas_formulario.exec()
+    
   # Funcion o metodo para recargar datos despues de un registro
   def recargar_datos_pacientes(self):
     self.cargar_datos_pacientes()
 
   def recargar_datos_signos(self):
-    pass
+    self.cargar_signos_pacientes()
 
   def recargar_datos_diagnostico(self):
     pass
@@ -327,10 +297,51 @@ class MenuBarraLateral(QMainWindow, Ui_MainWindow):
     datos = self.obtener_datos_tabla_signos()
     
     for row_index, row_data in enumerate(datos):
-      self.diagnostico_tableWidget.insertRow(row_index)
+      self.signos_tableWidget.insertRow(row_index)
       for col_index, cell_data in enumerate(row_data):
         elemento = QTableWidgetItem(str(cell_data))
-        self.diagnostico_tableWidget.setItem(row_index, col_index, elemento)
+        self.signos_tableWidget.setItem(row_index, col_index, elemento)
+        
+        # Widget personalizado con los botones de accion de editar y borrar
+        botones_acciones_widget = BotonesAccionWidgetSignos(row_index, row_data, self)
+        
+        # Insertamos los botones en la celda de acciones
+        self.signos_tableWidget.setCellWidget(row_index, 9, botones_acciones_widget)
+        self.signos_tableWidget.setRowHeight(row_index, 50)
+        
+  def buscar_signos_paciente(self):
+    # Borramos los resultados anteriores
+    self.signos_tableWidget.setRowCount(0)
+    
+    # Obtenemos la consulta de busqueda del QLineEdit
+    consulta_busqueda = self.search_signos_paciente.text()
+    
+    # Ejecutamos la consulta SQL
+    cur = self.crear_conexion().cursor()
+    sql_query = f"""
+      SELECT 
+        s.id as idSigno, p.poliza || ' - ' || p.apellidos || ' ' || p.nombre as poliza_nombre, peso, estatura, sistolica, diastolica, oxigenacion, temperatura, frecuencia 
+      FROM signos s
+      JOIN pacientes p ON s.idPaciente = p.id
+      WHERE poliza_nombre LIKE '%{consulta_busqueda}%'
+    """
+    
+    cur.execute(sql_query)
+    resultados = cur.fetchall()
+    
+    # Alimentamos la tabla con los datos de la busqueda
+    for row_index, row_data in enumerate(resultados):
+      self.signos_tableWidget.insertRow(row_index)
+      for col_index, cell_data in enumerate(row_data):
+        elemento = QTableWidgetItem(str(cell_data))
+        self.signos_tableWidget.setItem(row_index, col_index, elemento)
+        
+        # Widget personalizado con los botones de accion de editar y borrar
+        botones_acciones_widget = BotonesAccionWidgetSignos(row_index, row_data, self)
+        
+        # Insertamos los botones en la celda de acciones
+        self.signos_tableWidget.setCellWidget(row_index, 9, botones_acciones_widget)
+        self.signos_tableWidget.setRowHeight(row_index, 50)
 
   #TODO: Para Emily, implementar bien la funcion de obtener_datos_tabla_diagnostico
   def cargar_diagnostico_pacientes(self):
@@ -362,7 +373,10 @@ class MenuBarraLateral(QMainWindow, Ui_MainWindow):
     cur = self.crear_conexion().cursor()
 
     consulta = f"""
-      SELECT peso, estatura, sistolica, diastolica, oxigenacion, temperatura, frecuencia FROM signos
+      SELECT 
+        s.id as idSigno, p.poliza || ' - ' || p.apellidos || ' ' || p.nombre as poliza_nombre, peso, estatura, sistolica, diastolica, oxigenacion, temperatura, frecuencia 
+      FROM signos s
+      JOIN pacientes p ON s.idPaciente = p.id
     """
     
     cur.execute(consulta)

@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'ui_principal.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.8.0
+## Created by: Qt User Interface Compiler version 6.8.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -341,7 +341,9 @@ class Ui_MainWindow(object):
 "	font-weight: bold;\n"
 "	font-size: 12px;\n"
 "}")
-        self.regSignos_btn.setIcon(icon5)
+        icon8 = QIcon()
+        icon8.addFile(u":/iconos/icons/signos.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.regSignos_btn.setIcon(icon8)
         self.label_10 = QLabel(self.signos_page)
         self.label_10.setObjectName(u"label_10")
         self.label_10.setGeometry(QRect(0, 0, 301, 31))
@@ -351,8 +353,8 @@ class Ui_MainWindow(object):
         self.label_21.setGeometry(QRect(0, 30, 251, 31))
         self.label_21.setFont(font3)
         self.signos_tableWidget = QTableWidget(self.signos_page)
-        if (self.signos_tableWidget.columnCount() < 8):
-            self.signos_tableWidget.setColumnCount(8)
+        if (self.signos_tableWidget.columnCount() < 10):
+            self.signos_tableWidget.setColumnCount(10)
         __qtablewidgetitem8 = QTableWidgetItem()
         self.signos_tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem8)
         __qtablewidgetitem9 = QTableWidgetItem()
@@ -369,6 +371,10 @@ class Ui_MainWindow(object):
         self.signos_tableWidget.setHorizontalHeaderItem(6, __qtablewidgetitem14)
         __qtablewidgetitem15 = QTableWidgetItem()
         self.signos_tableWidget.setHorizontalHeaderItem(7, __qtablewidgetitem15)
+        __qtablewidgetitem16 = QTableWidgetItem()
+        self.signos_tableWidget.setHorizontalHeaderItem(8, __qtablewidgetitem16)
+        __qtablewidgetitem17 = QTableWidgetItem()
+        self.signos_tableWidget.setHorizontalHeaderItem(9, __qtablewidgetitem17)
         self.signos_tableWidget.setObjectName(u"signos_tableWidget")
         self.signos_tableWidget.setGeometry(QRect(10, 170, 1071, 441))
         self.signos_tableWidget.setMinimumSize(QSize(1071, 0))
@@ -384,13 +390,43 @@ class Ui_MainWindow(object):
 "	background-color: white;\n"
 "}")
         self.signos_tableWidget.setAlternatingRowColors(True)
+        self.search_signos_paciente = QLineEdit(self.signos_page)
+        self.search_signos_paciente.setObjectName(u"search_signos_paciente")
+        self.search_signos_paciente.setGeometry(QRect(10, 120, 262, 38))
+        self.search_signos_paciente.setMinimumSize(QSize(0, 38))
+        self.search_signos_paciente.setMaximumSize(QSize(16777215, 38))
+        self.search_signos_paciente.setStyleSheet(u"QLineEdit{\n"
+"	padding-left: 20px;\n"
+"	border: 1px solid gray;\n"
+"	border-radius: 10px;\n"
+"}")
         self.stackedWidget.addWidget(self.signos_page)
         self.sintomas_page = QWidget()
         self.sintomas_page.setObjectName(u"sintomas_page")
-        self.label_5 = QLabel(self.sintomas_page)
-        self.label_5.setObjectName(u"label_5")
-        self.label_5.setGeometry(QRect(410, 240, 271, 141))
-        self.label_5.setFont(font4)
+        self.label_13 = QLabel(self.sintomas_page)
+        self.label_13.setObjectName(u"label_13")
+        self.label_13.setGeometry(QRect(9, 0, 261, 31))
+        self.label_13.setFont(font2)
+        self.label_20 = QLabel(self.sintomas_page)
+        self.label_20.setObjectName(u"label_20")
+        self.label_20.setGeometry(QRect(10, 30, 251, 31))
+        self.label_20.setFont(font3)
+        self.regSintomas_btn = QPushButton(self.sintomas_page)
+        self.regSintomas_btn.setObjectName(u"regSintomas_btn")
+        self.regSintomas_btn.setGeometry(QRect(10, 63, 165, 41))
+        self.regSintomas_btn.setMinimumSize(QSize(0, 41))
+        self.regSintomas_btn.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.regSintomas_btn.setStyleSheet(u"QPushButton{\n"
+"	background-color: rgb(139, 208, 208);\n"
+"	color: white;\n"
+"	border: none;\n"
+"	border-radius: 8px;\n"
+"	font-weight: bold;\n"
+"	font-size: 12px;\n"
+"}")
+        icon9 = QIcon()
+        icon9.addFile(u":/iconos/icons/sintomas.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.regSintomas_btn.setIcon(icon9)
         self.stackedWidget.addWidget(self.sintomas_page)
         self.diagnostico = QWidget()
         self.diagnostico.setObjectName(u"diagnostico")
@@ -422,18 +458,18 @@ class Ui_MainWindow(object):
         self.diagnostico_tableWidget = QTableWidget(self.diagnostico)
         if (self.diagnostico_tableWidget.columnCount() < 6):
             self.diagnostico_tableWidget.setColumnCount(6)
-        __qtablewidgetitem16 = QTableWidgetItem()
-        self.diagnostico_tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem16)
-        __qtablewidgetitem17 = QTableWidgetItem()
-        self.diagnostico_tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem17)
         __qtablewidgetitem18 = QTableWidgetItem()
-        self.diagnostico_tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem18)
+        self.diagnostico_tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem18)
         __qtablewidgetitem19 = QTableWidgetItem()
-        self.diagnostico_tableWidget.setHorizontalHeaderItem(3, __qtablewidgetitem19)
+        self.diagnostico_tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem19)
         __qtablewidgetitem20 = QTableWidgetItem()
-        self.diagnostico_tableWidget.setHorizontalHeaderItem(4, __qtablewidgetitem20)
+        self.diagnostico_tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem20)
         __qtablewidgetitem21 = QTableWidgetItem()
-        self.diagnostico_tableWidget.setHorizontalHeaderItem(5, __qtablewidgetitem21)
+        self.diagnostico_tableWidget.setHorizontalHeaderItem(3, __qtablewidgetitem21)
+        __qtablewidgetitem22 = QTableWidgetItem()
+        self.diagnostico_tableWidget.setHorizontalHeaderItem(4, __qtablewidgetitem22)
+        __qtablewidgetitem23 = QTableWidgetItem()
+        self.diagnostico_tableWidget.setHorizontalHeaderItem(5, __qtablewidgetitem23)
         self.diagnostico_tableWidget.setObjectName(u"diagnostico_tableWidget")
         self.diagnostico_tableWidget.setGeometry(QRect(10, 140, 1071, 441))
         self.diagnostico_tableWidget.setMinimumSize(QSize(1071, 0))
@@ -480,16 +516,16 @@ class Ui_MainWindow(object):
         self.tratamiento_tableWidget = QTableWidget(self.tratamiento_page)
         if (self.tratamiento_tableWidget.columnCount() < 5):
             self.tratamiento_tableWidget.setColumnCount(5)
-        __qtablewidgetitem22 = QTableWidgetItem()
-        self.tratamiento_tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem22)
-        __qtablewidgetitem23 = QTableWidgetItem()
-        self.tratamiento_tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem23)
         __qtablewidgetitem24 = QTableWidgetItem()
-        self.tratamiento_tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem24)
+        self.tratamiento_tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem24)
         __qtablewidgetitem25 = QTableWidgetItem()
-        self.tratamiento_tableWidget.setHorizontalHeaderItem(3, __qtablewidgetitem25)
+        self.tratamiento_tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem25)
         __qtablewidgetitem26 = QTableWidgetItem()
-        self.tratamiento_tableWidget.setHorizontalHeaderItem(4, __qtablewidgetitem26)
+        self.tratamiento_tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem26)
+        __qtablewidgetitem27 = QTableWidgetItem()
+        self.tratamiento_tableWidget.setHorizontalHeaderItem(3, __qtablewidgetitem27)
+        __qtablewidgetitem28 = QTableWidgetItem()
+        self.tratamiento_tableWidget.setHorizontalHeaderItem(4, __qtablewidgetitem28)
         self.tratamiento_tableWidget.setObjectName(u"tratamiento_tableWidget")
         self.tratamiento_tableWidget.setGeometry(QRect(10, 130, 1071, 441))
         self.tratamiento_tableWidget.setMinimumSize(QSize(1071, 0))
@@ -527,7 +563,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -569,52 +605,59 @@ class Ui_MainWindow(object):
         self.label_10.setText(QCoreApplication.translate("MainWindow", u"Signos del Paciente", None))
         self.label_21.setText(QCoreApplication.translate("MainWindow", u"Lista de signos", None))
         ___qtablewidgetitem8 = self.signos_tableWidget.horizontalHeaderItem(0)
-        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"Peso", None));
+        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"id", None));
         ___qtablewidgetitem9 = self.signos_tableWidget.horizontalHeaderItem(1)
-        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"Estatura", None));
+        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"Paciente", None));
         ___qtablewidgetitem10 = self.signos_tableWidget.horizontalHeaderItem(2)
-        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"Presi\u00f3n Sist\u00f3lica", None));
+        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"Peso", None));
         ___qtablewidgetitem11 = self.signos_tableWidget.horizontalHeaderItem(3)
-        ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindow", u"Presi\u00f3n Diast\u00f3lica", None));
+        ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindow", u"Estatura", None));
         ___qtablewidgetitem12 = self.signos_tableWidget.horizontalHeaderItem(4)
-        ___qtablewidgetitem12.setText(QCoreApplication.translate("MainWindow", u"Saturaci\u00f3n de oxigeno", None));
+        ___qtablewidgetitem12.setText(QCoreApplication.translate("MainWindow", u"Sist\u00f3lica", None));
         ___qtablewidgetitem13 = self.signos_tableWidget.horizontalHeaderItem(5)
-        ___qtablewidgetitem13.setText(QCoreApplication.translate("MainWindow", u"Temperatura corporal", None));
+        ___qtablewidgetitem13.setText(QCoreApplication.translate("MainWindow", u"Diast\u00f3lica", None));
         ___qtablewidgetitem14 = self.signos_tableWidget.horizontalHeaderItem(6)
-        ___qtablewidgetitem14.setText(QCoreApplication.translate("MainWindow", u"Frecuencia Cardiaca", None));
+        ___qtablewidgetitem14.setText(QCoreApplication.translate("MainWindow", u"Oxigenaci\u00f3n", None));
         ___qtablewidgetitem15 = self.signos_tableWidget.horizontalHeaderItem(7)
-        ___qtablewidgetitem15.setText(QCoreApplication.translate("MainWindow", u"Opciones", None));
-        self.label_5.setText(QCoreApplication.translate("MainWindow", u"Sintomas Catalogo", None))
+        ___qtablewidgetitem15.setText(QCoreApplication.translate("MainWindow", u"Temperatura", None));
+        ___qtablewidgetitem16 = self.signos_tableWidget.horizontalHeaderItem(8)
+        ___qtablewidgetitem16.setText(QCoreApplication.translate("MainWindow", u"Frecuencia", None));
+        ___qtablewidgetitem17 = self.signos_tableWidget.horizontalHeaderItem(9)
+        ___qtablewidgetitem17.setText(QCoreApplication.translate("MainWindow", u"Opciones", None));
+        self.search_signos_paciente.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Buscar por poliza o nombre...", None))
+        self.label_13.setText(QCoreApplication.translate("MainWindow", u"Sintomas del paciente", None))
+        self.label_20.setText(QCoreApplication.translate("MainWindow", u"Lista de sintomas", None))
+        self.regSintomas_btn.setText(QCoreApplication.translate("MainWindow", u"Registrar Sintomas", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"Diagn\u00f3stico Catalogo", None))
         self.label_11.setText(QCoreApplication.translate("MainWindow", u"Diagn\u00f3stico del paciente", None))
         self.label_22.setText(QCoreApplication.translate("MainWindow", u"Lista de diagn\u00f3sticos", None))
         self.regDiagnostico_btn.setText(QCoreApplication.translate("MainWindow", u"Registrar Diagn\u00f3stico", None))
-        ___qtablewidgetitem16 = self.diagnostico_tableWidget.horizontalHeaderItem(0)
-        ___qtablewidgetitem16.setText(QCoreApplication.translate("MainWindow", u"Fecha", None));
-        ___qtablewidgetitem17 = self.diagnostico_tableWidget.horizontalHeaderItem(1)
-        ___qtablewidgetitem17.setText(QCoreApplication.translate("MainWindow", u"Poliza", None));
-        ___qtablewidgetitem18 = self.diagnostico_tableWidget.horizontalHeaderItem(2)
-        ___qtablewidgetitem18.setText(QCoreApplication.translate("MainWindow", u"Nombre", None));
-        ___qtablewidgetitem19 = self.diagnostico_tableWidget.horizontalHeaderItem(3)
-        ___qtablewidgetitem19.setText(QCoreApplication.translate("MainWindow", u"Apellido", None));
-        ___qtablewidgetitem20 = self.diagnostico_tableWidget.horizontalHeaderItem(4)
-        ___qtablewidgetitem20.setText(QCoreApplication.translate("MainWindow", u"Diagn\u00f3stico", None));
-        ___qtablewidgetitem21 = self.diagnostico_tableWidget.horizontalHeaderItem(5)
-        ___qtablewidgetitem21.setText(QCoreApplication.translate("MainWindow", u"Opciones", None));
+        ___qtablewidgetitem18 = self.diagnostico_tableWidget.horizontalHeaderItem(0)
+        ___qtablewidgetitem18.setText(QCoreApplication.translate("MainWindow", u"Fecha", None));
+        ___qtablewidgetitem19 = self.diagnostico_tableWidget.horizontalHeaderItem(1)
+        ___qtablewidgetitem19.setText(QCoreApplication.translate("MainWindow", u"Poliza", None));
+        ___qtablewidgetitem20 = self.diagnostico_tableWidget.horizontalHeaderItem(2)
+        ___qtablewidgetitem20.setText(QCoreApplication.translate("MainWindow", u"Nombre", None));
+        ___qtablewidgetitem21 = self.diagnostico_tableWidget.horizontalHeaderItem(3)
+        ___qtablewidgetitem21.setText(QCoreApplication.translate("MainWindow", u"Apellido", None));
+        ___qtablewidgetitem22 = self.diagnostico_tableWidget.horizontalHeaderItem(4)
+        ___qtablewidgetitem22.setText(QCoreApplication.translate("MainWindow", u"Diagn\u00f3stico", None));
+        ___qtablewidgetitem23 = self.diagnostico_tableWidget.horizontalHeaderItem(5)
+        ___qtablewidgetitem23.setText(QCoreApplication.translate("MainWindow", u"Opciones", None));
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"Tratamiento Catalogo", None))
         self.label_12.setText(QCoreApplication.translate("MainWindow", u"Tratamiento del Paciente", None))
         self.label_23.setText(QCoreApplication.translate("MainWindow", u"Lista de tratamientoa", None))
         self.regTratamiento_btn.setText(QCoreApplication.translate("MainWindow", u"Registrar Tratamiento", None))
-        ___qtablewidgetitem22 = self.tratamiento_tableWidget.horizontalHeaderItem(0)
-        ___qtablewidgetitem22.setText(QCoreApplication.translate("MainWindow", u"Fecha", None));
-        ___qtablewidgetitem23 = self.tratamiento_tableWidget.horizontalHeaderItem(1)
-        ___qtablewidgetitem23.setText(QCoreApplication.translate("MainWindow", u"Duracion", None));
-        ___qtablewidgetitem24 = self.tratamiento_tableWidget.horizontalHeaderItem(2)
-        ___qtablewidgetitem24.setText(QCoreApplication.translate("MainWindow", u"Indicaciones", None));
-        ___qtablewidgetitem25 = self.tratamiento_tableWidget.horizontalHeaderItem(3)
-        ___qtablewidgetitem25.setText(QCoreApplication.translate("MainWindow", u"Observaciones", None));
-        ___qtablewidgetitem26 = self.tratamiento_tableWidget.horizontalHeaderItem(4)
-        ___qtablewidgetitem26.setText(QCoreApplication.translate("MainWindow", u"Opciones", None));
+        ___qtablewidgetitem24 = self.tratamiento_tableWidget.horizontalHeaderItem(0)
+        ___qtablewidgetitem24.setText(QCoreApplication.translate("MainWindow", u"Fecha", None));
+        ___qtablewidgetitem25 = self.tratamiento_tableWidget.horizontalHeaderItem(1)
+        ___qtablewidgetitem25.setText(QCoreApplication.translate("MainWindow", u"Duracion", None));
+        ___qtablewidgetitem26 = self.tratamiento_tableWidget.horizontalHeaderItem(2)
+        ___qtablewidgetitem26.setText(QCoreApplication.translate("MainWindow", u"Indicaciones", None));
+        ___qtablewidgetitem27 = self.tratamiento_tableWidget.horizontalHeaderItem(3)
+        ___qtablewidgetitem27.setText(QCoreApplication.translate("MainWindow", u"Observaciones", None));
+        ___qtablewidgetitem28 = self.tratamiento_tableWidget.horizontalHeaderItem(4)
+        ___qtablewidgetitem28.setText(QCoreApplication.translate("MainWindow", u"Opciones", None));
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"Bienvenidos al servicio de urgencias", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Usuario X (admin)", None))
     # retranslateUi

@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'sintomasFormulario.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.8.0
+## Created by: Qt User Interface Compiler version 6.8.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -19,12 +19,12 @@ from PySide6.QtWidgets import (QApplication, QCheckBox, QDialog, QFrame,
     QHBoxLayout, QLabel, QPushButton, QSizePolicy,
     QVBoxLayout, QWidget)
 
-import sqlite3
-
-class Ui_SintomasDialog(object):
+class Ui_SintomasDialog(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
-    
+        
+        self.suma_triage = 0
+        
         self.resize(548, 584)
         self.setStyleSheet(u"QDialog{\n"
 "	background-color:white;\n"
@@ -160,6 +160,21 @@ class Ui_SintomasDialog(object):
         self.conciencia_checkBox.setObjectName(u"conciencia_checkBox")
 
         self.verticalLayout.addWidget(self.conciencia_checkBox)
+        
+        self.suma_triage_label = QLabel(self)
+        self.suma_triage_label.setObjectName(u"suma_triage_label")
+        self.suma_triage_label.setGeometry(QRect(340, 200, 170, 111))
+        font1 = QFont()
+        font1.setPointSize(72)
+        font1.setBold(True)
+        self.suma_triage_label.setFont(font1)
+        self.texto_triage_label = QLabel(self)
+        self.texto_triage_label.setObjectName(u"texto_triage_label")
+        self.texto_triage_label.setGeometry(QRect(357, 309, 150, 31))
+        font2 = QFont()
+        font2.setPointSize(16)
+        font2.setBold(False)
+        self.texto_triage_label.setFont(font2)
 
 
         self.retranslateUi(self)
@@ -168,7 +183,7 @@ class Ui_SintomasDialog(object):
     # setupUi
 
     def retranslateUi(self, SintomasDialog):
-        SintomasDialog.setWindowTitle(QCoreApplication.translate("SintomasDialog", u"Dialog", None))
+        SintomasDialog.setWindowTitle(QCoreApplication.translate("SintomasDialog", u"Registrar Sintomas", None))
         self.label.setText(QCoreApplication.translate("SintomasDialog", u"Registrar Sintomas", None))
         self.registrar_btn.setText(QCoreApplication.translate("SintomasDialog", u"Registrar", None))
         self.cancelar_btn.setText(QCoreApplication.translate("SintomasDialog", u"Cancelar", None))
@@ -188,5 +203,221 @@ class Ui_SintomasDialog(object):
         self.dolorpecho_checkBox.setText(QCoreApplication.translate("SintomasDialog", u"Dolor en el pecho", None))
         self.hemorragia_checkBox.setText(QCoreApplication.translate("SintomasDialog", u"Hemorragia", None))
         self.conciencia_checkBox.setText(QCoreApplication.translate("SintomasDialog", u"Perdida de conciencia", None))
+        self.suma_triage_label.setText(QCoreApplication.translate("SintomasDialog", u"00", None))
+        self.texto_triage_label.setText(QCoreApplication.translate("SintomasDialog", u"---------------------", None))
+        
     # retranslateUi
+        self.tos_checkBox.stateChanged.connect(self.cambio_de_estado_tos)
+        self.fatiga_checkBox.stateChanged.connect(self.cambio_de_estado_fatiga)
+        self.vomito_checkBox.stateChanged.connect(self.cambio_de_estado_vomito)
+        self.dolorgarganta_checkBox.stateChanged.connect(self.cambio_de_estado_garganta)
+        self.diarrea_checkBox.stateChanged.connect(self.cambio_de_estado_diarrea)
+        self.dolorcabeza_checkBox.stateChanged.connect(self.cambio_de_estado_cabeza)
+        self.fiebre_checkBox.stateChanged.connect(self.cambio_de_estado_fiebre)
+        self.dolorabdominal_checkBox.stateChanged.connect(self.cambio_de_estado_abdominal)
+        self.contusion_checkBox.stateChanged.connect(self.cambio_de_estado_contusion)
+        self.deshidratacion_checkBox.stateChanged.connect(self.cambio_de_estado_deshidratacion)
+        self.perdidavision_checkBox.stateChanged.connect(self.cambio_de_estado_vision)
+        self.quemadura_checkBox.stateChanged.connect(self.cambio_de_estado_quemadura)
+        self.difrespiratoria_checkBox.stateChanged.connect(self.cambio_de_estado_respiracion)
+        self.dolorpecho_checkBox.stateChanged.connect(self.cambio_de_estado_pecho)
+        self.hemorragia_checkBox.stateChanged.connect(self.cambio_de_estado_hemorragia)
+        self.conciencia_checkBox.stateChanged.connect(self.cambio_de_estado_conciencia)
+        
+        # Se registra nuevo paciente cuando se presiona un boton
+        # self.guardar_btn.clicked.connect(self.registrar_signos)
+        self.cancelar_btn.clicked.connect(self.close)
 
+    def cambio_de_estado_tos(self):
+        
+        if self.tos_checkBox.isChecked():
+            self.suma_triage +=3
+        else:
+            self.suma_triage -=3
+        
+        self.texto_triage()
+    
+    def cambio_de_estado_fatiga(self):    
+        if self.fatiga_checkBox.isChecked():
+            self.suma_triage +=4
+        else:
+            self.suma_triage -=4
+            
+        self.texto_triage()
+        
+    def cambio_de_estado_vomito(self):    
+        if self.vomito_checkBox.isChecked():
+            self.suma_triage +=5
+        else:
+            self.suma_triage -=5
+            
+        self.texto_triage()
+        
+    def cambio_de_estado_garganta(self):    
+        if self.vomito_checkBox.isChecked():
+            self.suma_triage +=6
+        else:
+            self.suma_triage -=6
+            
+        self.texto_triage()
+
+    def cambio_de_estado_diarrea(self):    
+        if self.diarrea_checkBox.isChecked():
+            self.suma_triage +=7
+        else:
+            self.suma_triage -=7
+            
+        self.texto_triage()
+
+    def cambio_de_estado_cabeza(self):    
+        if self.dolorcabeza_checkBox.isChecked():
+            self.suma_triage +=8
+        else:
+            self.suma_triage -=8
+            
+        self.texto_triage()
+
+    def cambio_de_estado_fiebre(self):    
+        if self.fiebre_checkBox.isChecked():
+            self.suma_triage +=9
+        else:
+            self.suma_triage -=9
+            
+        self.texto_triage()
+
+    def cambio_de_estado_abdominal(self):    
+        if self.dolorabdominal_checkBox.isChecked():
+            self.suma_triage +=10
+        else:
+            self.suma_triage -=10
+            
+        self.texto_triage()
+        
+    def cambio_de_estado_contusion(self):    
+        if self.contusion_checkBox.isChecked():
+            self.suma_triage +=11
+        else:
+            self.suma_triage -=11
+            
+        self.texto_triage()
+
+    def cambio_de_estado_deshidratacion(self):    
+        if self.deshidratacion_checkBox.isChecked():
+            self.suma_triage +=12
+        else:
+            self.suma_triage -=12
+            
+        self.texto_triage()
+
+    def cambio_de_estado_vision(self):    
+        if self.perdidavision_checkBox.isChecked():
+            self.suma_triage +=15
+        else:
+            self.suma_triage -=15
+            
+        self.texto_triage()
+        
+    def cambio_de_estado_quemadura(self):    
+        if self.quemadura_checkBox.isChecked():
+            self.suma_triage +=18
+        else:
+            self.suma_triage -=18
+            
+        self.texto_triage()
+
+    def cambio_de_estado_respiracion(self):    
+        if self.difrespiratoria_checkBox.isChecked():
+            self.suma_triage +=25
+        else:
+            self.suma_triage -=25
+            
+        self.texto_triage()
+        
+    def cambio_de_estado_pecho(self):    
+        if self.dolorpecho_checkBox.isChecked():
+            self.suma_triage +=30
+        else:
+            self.suma_triage -=30
+            
+        self.texto_triage()
+        
+    def cambio_de_estado_hemorragia(self):    
+        if self.hemorragia_checkBox.isChecked():
+            self.suma_triage +=35
+        else:
+            self.suma_triage -=35
+            
+        self.texto_triage()
+        
+    def cambio_de_estado_conciencia(self):    
+        if self.conciencia_checkBox.isChecked():
+            self.suma_triage +=40
+        else:
+            self.suma_triage -=40
+            
+        self.texto_triage()
+        
+    def texto_triage(self):
+        
+        self.suma_triage_label.setText(str(self.suma_triage))
+        
+        if self.suma_triage <= 10:
+            self.texto_triage_label.setText("No Urgente")
+            self.texto_triage_label.setStyleSheet(
+                """
+                QLabel{color:blue;}
+                """
+            )
+            self.suma_triage_label.setStyleSheet(
+                """
+                QLabel{color:blue;}
+                """
+            )
+        elif self.suma_triage <= 20:
+            self.texto_triage_label.setText("Poco Urgente")
+            self.texto_triage_label.setStyleSheet(
+                """
+                QLabel{color:green;}
+                """
+            )
+            self.suma_triage_label.setStyleSheet(
+                """
+                QLabel{color:green;}
+                """
+            )
+        elif self.suma_triage <= 30:
+            self.texto_triage_label.setText("Urgente")
+            self.texto_triage_label.setStyleSheet(
+                """
+                QLabel{color:#ffd900;}
+                """
+            )
+            self.suma_triage_label.setStyleSheet(
+                """
+                QLabel{color:#ffd900;}
+                """
+            )
+        elif self.suma_triage <= 40:
+            self.texto_triage_label.setText("Muy Urgente")
+            self.texto_triage_label.setStyleSheet(
+                """
+                QLabel{color:orange;}
+                """
+            )
+            self.suma_triage_label.setStyleSheet(
+                """
+                QLabel{color:orange;}
+                """
+            )
+        else:
+            self.texto_triage_label.setText("Emergencia")
+            self.texto_triage_label.setStyleSheet(
+                """
+                QLabel{color:red;}
+                """
+            )
+            self.suma_triage_label.setStyleSheet(
+                """
+                QLabel{color:red;}
+                """
+            )

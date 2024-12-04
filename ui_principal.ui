@@ -334,7 +334,7 @@ QPushButton:checked {
       </rect>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="paciente_page">
       <widget class="QLabel" name="label_9">
@@ -671,7 +671,7 @@ QTableWidget{
        </property>
        <property name="icon">
         <iconset resource="assests.qrc">
-         <normaloff>:/iconos/icons/paciente.png</normaloff>:/iconos/icons/paciente.png</iconset>
+         <normaloff>:/iconos/icons/signos.png</normaloff>:/iconos/icons/signos.png</iconset>
        </property>
       </widget>
       <widget class="QLabel" name="label_10">
@@ -750,6 +750,16 @@ QTableWidget{
        </property>
        <column>
         <property name="text">
+         <string>id</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Paciente</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
          <string>Peso</string>
         </property>
        </column>
@@ -760,27 +770,27 @@ QTableWidget{
        </column>
        <column>
         <property name="text">
-         <string>Presión Sistólica</string>
+         <string>Sistólica</string>
         </property>
        </column>
        <column>
         <property name="text">
-         <string>Presión Diastólica</string>
+         <string>Diastólica</string>
         </property>
        </column>
        <column>
         <property name="text">
-         <string>Saturación de oxigeno</string>
+         <string>Oxigenación</string>
         </property>
        </column>
        <column>
         <property name="text">
-         <string>Temperatura corporal</string>
+         <string>Temperatura</string>
         </property>
        </column>
        <column>
         <property name="text">
-         <string>Frecuencia Cardiaca</string>
+         <string>Frecuencia</string>
         </property>
        </column>
        <column>
@@ -789,24 +799,112 @@ QTableWidget{
         </property>
        </column>
       </widget>
-     </widget>
-     <widget class="QWidget" name="sintomas_page">
-      <widget class="QLabel" name="label_5">
+      <widget class="QLineEdit" name="search_signos_paciente">
        <property name="geometry">
         <rect>
-         <x>410</x>
-         <y>240</y>
-         <width>271</width>
-         <height>141</height>
+         <x>10</x>
+         <y>120</y>
+         <width>262</width>
+         <height>38</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>38</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>38</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit{
+	padding-left: 20px;
+	border: 1px solid gray;
+	border-radius: 10px;
+}</string>
+       </property>
+       <property name="placeholderText">
+        <string>Buscar por poliza o nombre...</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="sintomas_page">
+      <widget class="QLabel" name="label_13">
+       <property name="geometry">
+        <rect>
+         <x>9</x>
+         <y>0</y>
+         <width>261</width>
+         <height>31</height>
         </rect>
        </property>
        <property name="font">
         <font>
-         <pointsize>24</pointsize>
+         <pointsize>18</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
-        <string>Sintomas Catalogo</string>
+        <string>Sintomas del paciente</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_20">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>251</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Lista de sintomas</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="regSintomas_btn">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>63</y>
+         <width>165</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>41</height>
+        </size>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	background-color: rgb(139, 208, 208);
+	color: white;
+	border: none;
+	border-radius: 8px;
+	font-weight: bold;
+	font-size: 12px;
+}</string>
+       </property>
+       <property name="text">
+        <string>Registrar Sintomas</string>
+       </property>
+       <property name="icon">
+        <iconset resource="assests.qrc">
+         <normaloff>:/iconos/icons/sintomas.png</normaloff>:/iconos/icons/sintomas.png</iconset>
        </property>
       </widget>
      </widget>

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'signosFormulario.ui'
+## Form generated from reading UI file 'signosFormularioUpdate.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.8.1
 ##
@@ -9,7 +9,7 @@
 ################################################################################
 
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
+    QMetaObject, QObject, QPoint, QRect, Signal,
     QSize, QTime, QUrl, Qt)
 from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
@@ -19,12 +19,30 @@ from PySide6.QtWidgets import (QApplication, QComboBox, QDialog, QFrame,
     QHBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox,
     QSizePolicy, QVBoxLayout, QWidget)
 
-from cargaBD import ObtenerDatosBD
 import sqlite3
 
-class Ui_SignosDialog(QDialog):
-    def __init__(self, parent=None):
-        super().__init__(parent)
+class Ui_SignosDialogUpdate(QDialog):
+    
+    datos_editados = Signal()
+    
+    def __init__(self, row_index, row_data):
+        super().__init__()
+        
+        self.row_index = row_index
+        self.row_data = row_data
+        
+        self.signos_info = self.signos_seleccionado()[0]
+        
+        self.signos_id = self.signos_info[0]
+        self.signos_peso = self.signos_info[1]
+        self.signos_estatura = self.signos_info[2]
+        self.signos_sistolica = self.signos_info[3]
+        self.signos_diastolica = self.signos_info[4]
+        self.signos_oxigenacion = self.signos_info[5]
+        self.signos_temperatura = self.signos_info[6]
+        self.signos_frecuencia = self.signos_info[7]
+        self.signos_paciente_id = self.signos_info[8]
+        
         self.resize(548, 584)
         self.setStyleSheet(u"QDialog{\n"
 "	background-color:white;\n"
@@ -247,107 +265,116 @@ class Ui_SignosDialog(QDialog):
 
         self.verticalLayout_8.addWidget(self.label_10)
 
-        self.signos_paciente_comboBox = QComboBox(self.layoutWidget4)
-        self.signos_paciente_comboBox.setObjectName(u"signos_paciente_comboBox")
-        self.signos_paciente_comboBox.setMinimumSize(QSize(0, 31))
-        self.signos_paciente_comboBox.setMaximumSize(QSize(16777215, 31))
+        self.signos_nombre = QLabel(self.layoutWidget4)
+        self.signos_nombre.setObjectName(u"signos_nombre")
+        font2 = QFont()
+        font2.setPointSize(12)
+        font2.setItalic(True)
+        font2.setUnderline(False)
+        self.signos_nombre.setFont(font2)
 
-        self.verticalLayout_8.addWidget(self.signos_paciente_comboBox)
+        self.verticalLayout_8.addWidget(self.signos_nombre)
 
 
-        self.retranslateUi(self)
+        self.retranslateUi()
 
         QMetaObject.connectSlotsByName(self)
     # setupUi
 
-    def retranslateUi(self, SignosDialog):
-        SignosDialog.setWindowTitle(QCoreApplication.translate("SignosDialog", u"Dialog", None))
+    def retranslateUi(self):
+        self.setWindowTitle(QCoreApplication.translate("SignosDialog", u"Dialog", None))
         self.label_5.setText(QCoreApplication.translate("SignosDialog", u"Presi\u00f3n Sist\u00f3lica", None))
         self.label_6.setText(QCoreApplication.translate("SignosDialog", u"Presi\u00f3n Diast\u00f3lica", None))
         self.label_8.setText(QCoreApplication.translate("SignosDialog", u"Temp. Corporal (\u00b0C)", None))
         self.label_9.setText(QCoreApplication.translate("SignosDialog", u"Frecuencia cardiaca (LPM)", None))
-        self.label.setText(QCoreApplication.translate("SignosDialog", u"Registrar Signos", None))
-        self.guardar_btn.setText(QCoreApplication.translate("SignosDialog", u"Guardar", None))
+        self.label.setText(QCoreApplication.translate("SignosDialog", u"Editar Signos", None))
+        self.guardar_btn.setText(QCoreApplication.translate("SignosDialog", u"Editar", None))
         self.cancelar_btn.setText(QCoreApplication.translate("SignosDialog", u"Cancelar", None))
         self.label_3.setText(QCoreApplication.translate("SignosDialog", u"Peso (kg)", None))
         self.label_4.setText(QCoreApplication.translate("SignosDialog", u"Estatura (m)", None))
         self.label_7.setText(QCoreApplication.translate("SignosDialog", u"Saturaci\u00f3n de oxigeno (%)", None))
         self.label_10.setText(QCoreApplication.translate("SignosDialog", u"Paciente", None))
-        self.signos_paciente_comboBox.addItem("SELECCIONA PACIENTE")
-        
-        obtener_datos = ObtenerDatosBD()
-        pacientes = obtener_datos.obtener_pacientes()
-        
-        for elemento in pacientes:
-            concat_cadena = elemento[1] + ' - ' + elemento[3] + ' ' + elemento[2]
-            self.signos_paciente_comboBox.addItem(concat_cadena, elemento[0])
-            
+        self.signos_nombre.setText(QCoreApplication.translate("SignosDialog", self.row_data[1], None))
     # retranslateUi
+
+        self.peso_lineEdit.setText(str(self.signos_peso))
+        self.estatura_lineEdit_2.setText(str(self.signos_estatura))
+        self.sistolica_lineEdit_3.setText(str(self.signos_sistolica))
+        self.diastolica_lineEdit_4.setText(str(self.signos_diastolica))
+        self.oxigenacion_lineEdit_5.setText(str(self.signos_oxigenacion))
+        self.temperatura_lineEdit_6.setText(str(self.signos_temperatura))
+        self.frecuencia_lineEdit_7.setText(str(self.signos_frecuencia))    
     
-        # Se registra nuevo paciente cuando se presiona un boton
-        self.guardar_btn.clicked.connect(self.registrar_signos)
+        self.guardar_btn.clicked.connect(self.editar_datos)
         self.cancelar_btn.clicked.connect(self.close)
         
-        # Creamos una conexion a sqlite3
     def crear_conexion(self):
-        
         con = sqlite3.connect("hospital.db")
-        
+    
         self.mydb = con
-        
+    
         return self.mydb
+
+    def signos_seleccionado(self):
         
-    def insertar_nuevos_signos(self):
+        self.cur = self.crear_conexion().cursor()
+        
+        # obtenemos las variables del paciente de la tabla
+        self.id_signo = self.row_data[0]
+        
+        consulta = f"SELECT * FROM signos WHERE id = '{self.id_signo}'"
+        
+        self.cur.execute(consulta)
+        
+        registros = self.cur.fetchall()
+        
+        self.mydb.commit()
+        self.mydb.close()
+        return registros
+    
+    def editar_datos(self):
         try:
             con = self.crear_conexion()
+            
+            if con is None:
+                return
+            
             cur = con.cursor()
             
-            peso = self.peso_lineEdit.text()
-            estatura = self.estatura_lineEdit_2.text()
-            sistolica = self.sistolica_lineEdit_3.text()
-            diastolica = self.diastolica_lineEdit_4.text()
-            oxigenacion = self.oxigenacion_lineEdit_5.text()
-            temperatura = self.temperatura_lineEdit_6.text()
-            frecuencia = self.frecuencia_lineEdit_7.text()
-            idPaciente = self.signos_paciente_comboBox.currentData()
-            
-            consulta_insertar_signos = f"""
-                INSERT INTO signos (
-                    peso,
-                    estatura,
-                    sistolica,
-                    diastolica,
-                    oxigenacion,
-                    temperatura,
-                    frecuencia,
-                    idPaciente
-                ) VALUES (
-                    '{peso}',
-                    '{estatura}',
-                    '{sistolica}',
-                    '{diastolica}',
-                    '{oxigenacion}',
-                    '{temperatura}',
-                    '{frecuencia}',
-                    '{idPaciente}'
-                )
+            consulta_editar = f"""
+                UPDATE signos
+                SET
+                    peso='{self.peso_lineEdit.text()}',
+                    estatura='{self.estatura_lineEdit_2.text()}',
+                    sistolica='{self.sistolica_lineEdit_3.text()}',
+                    diastolica='{self.diastolica_lineEdit_4.text()}',
+                    oxigenacion='{self.oxigenacion_lineEdit_5.text()}',
+                    temperatura='{self.temperatura_lineEdit_6.text()}',
+                    frecuencia='{self.frecuencia_lineEdit_7.text()}',
+                    idPaciente='{self.signos_info[8]}'
+                WHERE
+                    id='{self.id_signo}'
             """
             
-            cur.execute(consulta_insertar_signos)
-            self.mostrar_mensaje_insertar()
+            cur.execute(consulta_editar)
             con.commit()
-            con.close()  
+            self.mostrar_mensaje_editar()
+            cur.close()
+            con.close()
+            self.close()
+            
+            # Emitimos la señal
+            self.datos_editados.emit()
+        
         except sqlite3.Error as err:
             print(f"Error: {err}")
+            
+    def mostrar_mensaje_editar(self):
         
-    def mostrar_mensaje_insertar(self):
         msg_box = QMessageBox(self)
-        msg_box.setWindowTitle("Registrado")
-        msg_box.setText("Los signos han sido registrado")
+        msg_box.setWindowTitle("Editado")
+        msg_box.setText("la información de los signos ha sido editada")
         msg_box.exec()
-        
-    def registrar_signos(self):
-        self.insertar_nuevos_signos()
-        self.accept()
-        
+    
+
 

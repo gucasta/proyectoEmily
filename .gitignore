@@ -1,5 +1,7 @@
 __pycache__/
 envProyecto/
 pasado/
+venv/
+env/
 
 Pipfile
